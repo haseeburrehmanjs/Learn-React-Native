@@ -9,10 +9,14 @@ const index = () => {
 
   const addTodo = () => {
     console.log('todo add ho raha ha');
-    todo.push(input)
-    settodo([...todo])
-    console.log(todo);
-    setinput('')
+    if (input === '') {
+      alert('please enter todo value')
+    } else {
+      todo.push(input)
+      settodo([...todo])
+      console.log(todo);
+      setinput('')
+    }
   }
   return (
     <SafeAreaView style={{
@@ -23,7 +27,7 @@ const index = () => {
         fontSize: 30,
         fontWeight: 'bold'
       }}>My Todo App</Text>
-       <TextInput
+      <TextInput
         style={styles.input}
         onChangeText={setinput}
         value={input}
@@ -34,14 +38,40 @@ const index = () => {
           color: 'white',
         }}>Press Here</Text>
       </TouchableOpacity>
-      {todo.length > 0 ? <View>{todo.map((item,index) => (
-        <Text key={index} style={{
-          backgroundColor: 'orange',
-          padding: 20,
-          color: 'white',
-          width: 300,
-          marginTop: 10
-        }}>{item}</Text>
+      {todo.length > 0 ? <View>{todo.map((item, index) => (
+        <View style={{
+          flex: 1,
+          justifyContent: 'space-between'
+        }}>
+          <Text key={index} style={{
+            backgroundColor: 'orange',
+            padding: 20,
+            color: 'white',
+            width: 300,
+            marginTop: 10
+          }}>{item}</Text>
+          <View style={{
+            flex: 1,
+            flexDirection: 'row',
+            gap: 10,
+            marginTop: 10
+          }}>
+            <TouchableOpacity style={{
+              backgroundColor: 'red',
+              paddingHorizontal: 14,
+              paddingVertical: 10
+            }}><Text style={{
+              color: 'white'
+            }}>Delete</Text></TouchableOpacity>
+            <TouchableOpacity style={{
+              backgroundColor: 'blue',
+              paddingHorizontal: 14,
+              paddingVertical: 10
+            }}><Text style={{
+              color: 'white'
+            }}>Edit</Text></TouchableOpacity>
+          </View>
+        </View>
       ))}</View> : <Text style={{
         fontSize: 20,
         fontWeight: 'bold',
@@ -65,14 +95,14 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   button: {
-    width:300,
+    width: 300,
     alignItems: 'center',
     backgroundColor: 'orange',
     padding: 10,
     marginTop: 2,
     borderRadius: 30
   },
-  todos : {
+  todos: {
     width: '100%',
     padding: 5,
     backgroundColor: 'ligheblue'
