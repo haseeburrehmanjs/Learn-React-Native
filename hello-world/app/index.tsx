@@ -28,6 +28,12 @@ const index = () => {
         <Link style={{
           color: 'white'
         }} href={'contact'}>Contact</Link>
+        <Link style={{
+          color: 'white'
+        }} href={'contact'}>Services</Link>
+        <Link style={{
+          color: 'white'
+        }} href={'contact'}>About Us</Link>
     </View>
   )
 }
